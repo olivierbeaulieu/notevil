@@ -474,7 +474,7 @@ function canSetProperty(object, property, primitives){
 function getFunction(body, params, parentContext){
   return function(){
     var context = Object.create(parentContext)
-    if (this == window){
+    if (this == window.self){
       context['this'] = null
     } else {
       context['this'] = this
