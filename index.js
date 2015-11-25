@@ -474,6 +474,12 @@ function canSetProperty(object, property, primitives){
 function getFunction(body, params, parentContext){
   return function(){
     var context = Object.create(parentContext)
+
+    var scope = window.self;
+    if(/Firefox/.test(navigator.userAgent)){
+    	scope = window;
+    }
+
     if (this == window.self){
       context['this'] = null
     } else {
